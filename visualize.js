@@ -10,7 +10,7 @@ function initialize () {
     var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 18,
         center: new google.maps.LatLng(33.444892, -118.484664),
-        mapTypeId: google.maps.MapTypeId.SATELLITE,
+        mapTypeId: google.maps.MapTypeId.HYBRID,
         disableDefaultUI: false,
         zoomControl: true,
         scaleControl: true
