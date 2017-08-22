@@ -12,7 +12,8 @@ function initialize () {
         center: new google.maps.LatLng(33.444892, -118.484664),
         mapTypeId: google.maps.MapTypeId.SATELLITE,
         disableDefaultUI: false,
-        zoomControl: true
+        zoomControl: true,
+        scaleControl: true
     });
 
     // Creates a drawing manager attached to the map that allows the user to draw
