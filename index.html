@@ -6,7 +6,8 @@
         <title>Polygon Drawer</title>
         <script type="text/javascript"
         src="http://maps.google.com/maps/api/js?key=AIzaSyBapIz1Am0S1f0ieA0Hp7PWKndNGHuv8rI&libraries=drawing"></script>
-        <script type="text/javascript" src="./visualize.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.8.0/d3.js"></script>
 
         <!-- Bootstrap core CSS -->
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
@@ -36,14 +37,19 @@
     <div class="container">
 
     <button class="btn btn btn-default" onclick="savePolygon();" style="margin-bottom:10px" >Save Current Polygon as CSV</button>
+    <input type="file" name="csvfile" id="csvfile" class="inputfile" enctype="multipart/form-data"/>
+    <label for="csvfile" class="btn btn-default">Choose a CSV Polygon File</label>
 
     <div  id="map"></div>
 
     </div>
 
     <footer class="footer">
+
         <p>&copy; Jingnan Shi, Harvey Mudd College</p>
     </footer>
+
+    p<script type="text/javascript" src="./visualize.js"></script>
 
     </body>
 </html>
