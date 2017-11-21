@@ -4,7 +4,7 @@ var colors = ['#1E90FF', '#FF1493', '#32CD32', '#FF8C00', '#4B0082'];
 var selectedColor;
 var colorButtons = {};
 
-var polygon;
+var polygon = [];
 var map;
 var polygon_options = {
             strokeWeight: 0,
@@ -46,33 +46,37 @@ function initialize () {
     // save the polygon out
     google.maps.event.addListener(drawingManager, 'polygoncomplete', function (e) {
 
-        polygon = e.getPath();
-        polygon.forEach(function(vert, index) { console.log(vert.toString())})
+        cpolygon = e.getPath();
+        polygon.push(cpolygon);
+        cpolygon.forEach(function(vert, index) { console.log(vert.toString())})
     });
 }
 
 function savePolygon() {
 
-    var csvRows = ["Latitude,Longitude"];
-
-    polygon.forEach(function(vert, index) 
-        { 
-            var cRow = vert.toString();
-
-            csvRows.push(cRow.substring(1, cRow.length - 1));
-
-        })
-
-    console.log(csvRows);
-
-    var csvString = csvRows.join("\r\n");
-    var a         = document.createElement('a');
-    a.href        = 'data:attachment/csv,' +  encodeURIComponent(csvString);
-    a.target      = '_blank';
-    a.download    = 'path.csv';
-
-    document.body.appendChild(a);
-    a.click();
+    for (i = 0; i < polygon.length; i++)
+    {
+        var csvRows = ["Latitude,Longitude"];
+        
+            polygon[i].forEach(function(vert, index) 
+                { 
+                    var cRow = vert.toString();
+        
+                    csvRows.push(cRow.substring(1, cRow.length - 1));
+        
+                })
+        
+            console.log(csvRows);
+        
+            var csvString = csvRows.join("\r\n");
+            var a         = document.createElement('a');
+            a.href        = 'data:attachment/csv,' +  encodeURIComponent(csvString);
+            a.target      = '_blank';
+            a.download    = 'path.csv';
+        
+            document.body.appendChild(a);
+            a.click();
+    }
 
 }
 
